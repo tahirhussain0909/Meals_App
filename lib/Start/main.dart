@@ -19,6 +19,7 @@ final kTheme = ThemeData(
 void main() {
   runApp(
     MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: kTheme,
       themeMode: ThemeMode.dark,
       home: const CategoriesScreen(),
