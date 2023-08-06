@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:meals_app/screens/categories_screen.dart';
+//import 'package:meals_app/screens/categories_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:meals_app/screens/tabs.dart';
 
 final kTheme = ThemeData(
   useMaterial3: true,
@@ -22,7 +23,7 @@ void main() {
       debugShowCheckedModeBanner: false,
       theme: kTheme,
       themeMode: ThemeMode.dark,
-      home: const CategoriesScreen(),
+      home: const TabsScreen(),
     ),
   );
 }
