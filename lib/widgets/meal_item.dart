@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:meals_app/models/meal.dart';
-import 'package:meals_app/widgets/meal_item_trait.dart';
 import 'package:transparent_image/transparent_image.dart';
+import 'package:meals_app/widgets/meal_item_trait.dart';
+import 'package:meals_app/models/meal.dart';
 
 class MealItem extends StatelessWidget {
   const MealItem({
@@ -26,7 +27,7 @@ class MealItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: const EdgeInsets.all(12),
+      margin: const EdgeInsets.all(8),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8),
       ),
@@ -40,9 +41,7 @@ class MealItem extends StatelessWidget {
           children: [
             FadeInImage(
               placeholder: MemoryImage(kTransparentImage),
-              image: NetworkImage(
-                meal.imageUrl,
-              ),
+              image: NetworkImage(meal.imageUrl),
               fit: BoxFit.cover,
               height: 200,
               width: double.infinity,
@@ -53,10 +52,8 @@ class MealItem extends StatelessWidget {
               right: 0,
               child: Container(
                 color: Colors.black54,
-                padding: const EdgeInsets.symmetric(
-                  vertical: 6,
-                  horizontal: 44,
-                ),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 6, horizontal: 44),
                 child: Column(
                   children: [
                     Text(
@@ -64,37 +61,37 @@ class MealItem extends StatelessWidget {
                       maxLines: 2,
                       textAlign: TextAlign.center,
                       softWrap: true,
-                      overflow: TextOverflow.ellipsis,
+                      overflow: TextOverflow.ellipsis, // Very long text ...
                       style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
                       ),
                     ),
-                    const SizedBox(
-                      height: 12,
-                    ),
+                    const SizedBox(height: 12),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         MealItemTrait(
-                            icon: Icons.schedule,
-                            label: '${meal.duration} min'),
-                        const SizedBox(
-                          width: 10,
+                          icon: Icons.schedule,
+                          label: '${meal.duration} min',
                         ),
-                        MealItemTrait(icon: Icons.work, label: complexityText),
-                        const SizedBox(
-                          width: 10,
-                        ),
+                        const SizedBox(width: 12),
                         MealItemTrait(
-                            icon: Icons.attach_money, label: affordabilityText),
+                          icon: Icons.work,
+                          label: complexityText,
+                        ),
+                        const SizedBox(width: 12),
+                        MealItemTrait(
+                          icon: Icons.attach_money,
+                          label: affordabilityText,
+                        )
                       ],
                     ),
                   ],
                 ),
               ),
-            ),
+            )
           ],
         ),
       ),
