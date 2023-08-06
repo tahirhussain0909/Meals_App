@@ -42,6 +42,14 @@ class MainDrawer extends StatelessWidget {
                 ),
               ],
             ),
+          ),
+          ListTile(
+            title: Text(
+              'Meals!',
+              style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                  color: Theme.of(context).colorScheme.onBackground,
+                  fontSize: 24),
+            ),
           )
         ],
       ),
