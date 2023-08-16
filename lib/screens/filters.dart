@@ -13,7 +13,8 @@ enum Filter {
 }
 
 class FiltersScreen extends StatefulWidget {
-  const FiltersScreen({super.key});
+  const FiltersScreen({super.key, required this.currentFilters,});
+  final Map<Filter, bool> currentFilters;
 
   @override
   State<FiltersScreen> createState() {
@@ -28,6 +29,15 @@ class _FiltersScreenState extends State<FiltersScreen> {
   var _veganFilterSet = false;
 
   @override
+  void initState() {
+    super.initState();
+    _glutenFreeFilterSet = widget.currentFilters[Filter.glutenFree]!;
+    _veganFilterSet = widget.currentFilters[Filter.vegan]!;
+    _vegetarianFilterSet = widget.currentFilters[Filter.vegetarian]!;
+    _lactoseFreeFilterSet = widget.currentFilters[Filter.lactoseFree]!;
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -37,7 +47,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
         onSelectScreen: (identifier) {
           Navigator.of(context).pop();
           if (identifier == 'meals') {
-            Navigator.of(context).pushReplacement(
+            Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (ctx) => const TabsScreen(),
               ),
